@@ -118,7 +118,8 @@ export default class singUp extends React.Component {
           <View style={styles.space} />
           <TextInput style={styles.input}
             underlineColorAndroid="transparent"
-            placeholder="Username"
+            accessible={true} accessibilityLabel="Text field For Username"
+          accessibilityHint = "Fill out your username, the username should be more than five characters"
             placeholderTextColor="#992a20"
             onChangeText={val => this.handleChange('username', val)}
                     value={this.state.username}
@@ -126,8 +127,8 @@ export default class singUp extends React.Component {
           <TextInput style={styles.input}
             secureTextEntry={true}
             underlineColorAndroid="transparent"
-            placeholder="Password"
-            onChangeText={val => this.handleChange('password', val)} 
+            accessible={true} accessibilityLabel="Text field For Username"
+            accessibilityHint = "Fill out your password, the password should be more than five characters"   onChangeText={val => this.handleChange('password', val)} 
                     value={this.state.password}
             placeholderTextColor="#992a20"
             autoCapitalize="none" />

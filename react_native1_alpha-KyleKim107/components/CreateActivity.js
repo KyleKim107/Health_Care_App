@@ -101,22 +101,26 @@ export default class CreateActivity extends React.Component {
                 <View style={styles.inner}>
                         <View style ={styles.rowContainer}>
                             <Text style={styles.text}>Exercise Name</Text>
-                            <TextInput placeholder="Exercise Name:" onChangeText={val => this.handleChange('name', val)} style={styles.input}/>
+                            <TextInput  onChangeText={val => this.handleChange('name', val)} style={styles.input}
+                             accessible={true} accessibilityLabel="Text field For Activity Name"
+                             />
                         </View>
                         <View style ={styles.rowContainer}>
                             <Text style={styles.text}>Duratoin (minutes)</Text>
-                            <TextInput placeholder="Duratoin (minutes):" onChangeText={val => this.handleChange('duration', val)} style={styles.input}/>
+                            <TextInput  onChangeText={val => this.handleChange('duration', val)} style={styles.input}
+                            accessible={true} accessibilityLabel="Text field for activity’s Duration"/>
                         </View>
                         <View style ={styles.rowContainer}>
                             <Text style={styles.text}>Calories Burnt</Text>
-                            <TextInput placeholder="Calories Burnt:" onChangeText={val => this.handleChange('calories', val)} style={styles.input}/>
+                            <TextInput  onChangeText={val => this.handleChange('calories', val)} style={styles.input}
+                            accessible={true} accessibilityLabel="Text field for total calories burnt"/>
                         </View>
                        
                          <DatePicker
                             style={styles.datepicker}
                             date={this.state.date} //initial date from state
                             mode="date" 
-                            placeholder="Click to Select Date!"
+                            
                             is24Hour={true}
                             format="YYYY-MM-DD"
                             minDate="01-01-2020"
@@ -140,6 +144,7 @@ export default class CreateActivity extends React.Component {
                                     borderRadius: 5,
                                 }
                             }}
+                            accessible={true} accessibilityLabel="Calendar for pick a date for the activity"
                             onDateChange={date => {
                                 this.setState({ date: date });
                             }}
@@ -152,6 +157,7 @@ export default class CreateActivity extends React.Component {
                         Selected Time: {this.state.selectedHours}:{this.state.selectedMinutes}
                         </Text>
                         <TimePicker
+                        accessible={true} accessibilityLabel="Dial to set the time"
                         selectedHours={this.state.selectedHours}
                         //initial Hourse value
                         selectedMinutes={this.state.selectedMinutes}
@@ -166,7 +172,9 @@ export default class CreateActivity extends React.Component {
 
                     
                         <View style={styles.rowContainerButton}>
-                            <TouchableOpacity style={styles.btnContainer} onPress={this.createActivity}>
+                            <TouchableOpacity style={styles.btnContainer} onPress={this.createActivity}
+                            accessible={true} accessibilityLabel="Button to Create an Activity"
+                            accessibilityHint = "Move to activity page after craeting an activity">
                                     <Text style={styles.btnText}>Save Exercise</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.btnContainer} onPress={this.moveToDefault}>

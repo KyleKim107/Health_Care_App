@@ -105,7 +105,9 @@ export default class Activity extends React.Component{
                         <View style={{padding:10, alignItems: 'center', justifyContent: 'center', width: "100%", height: 40, backgroundColor:  '#00FFFF'}}>
                                 <Text style={{color: "white", fontSize: 20}}>Swipe Left to Delete, Right to Edit</Text>
                         </View>
-                        <TouchableOpacity style={styles.btnContainerForBlue} onPress={this.moveToCreateActivity}>
+                        <TouchableOpacity style={styles.btnContainerForBlue} onPress={this.moveToCreateActivity}
+                         accessible={true} accessibilityLabel="Button for Creating Activity"
+                         accessibilityHint = "Move to Create Activity Page, You can create an activity on the page.">
                                         <Text style={styles.btnText}>Create</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.btnContainerForBlue} onPress={this.moveToDefault}>

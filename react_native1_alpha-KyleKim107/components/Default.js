@@ -209,7 +209,9 @@ export default class Default extends React.Component {
                             <Text style={styles.btnText}>Profile</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.btnContainerForBlue} onPress={this.switchToActivity}>
+            <TouchableOpacity style={styles.btnContainerForBlue} onPress={this.switchToActivity}
+             accessible={true} accessibilityLabel="Activity Page"
+             accessibilityHint = "Move to Activity Page, you can add, edit, delete an activity">
                             <Text style={styles.btnText}>Acivity</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnContainer} onPress={this.logOut}>

@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import { Component} from 'react';
-import { StyleSheet, Text,KeyboardAvoidingView, View,TextInput, Button}from 'react-native';
+import { StyleSheet, Text,TouchableOpacity, View,TextInput, Button}from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 import base64 from 'base-64';
 
@@ -60,27 +60,44 @@ export default class Login extends React.Component {
     render(){
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop:30  }}>
-      <Text style={{  
-              fontSize: 40,
-              fontWeight: 'bold',
-              marginBottom: 5}}> FitnessTracker</Text>
-      <Text style={{  
-              fontSize: 15,
-              marginBottom: 15}}> Welcome, pleaes login or sighup to continue</Text>
-        <View style={styles.view2}>
-          <TextInput style={styles.passWord }  placeholder="   User Name" placeholderTextColor="#fff"               
-          onChangeText={val => this.handleChange('username', val)}/>
+      <View accessible={false}>
+        <Text style={{  
+                fontSize: 40,
+                fontWeight: 'bold',
+                marginBottom: 5}}
+                accessible={false}
+                > FitnessTracker</Text>
+        <Text style={{  
+                fontSize: 15,
+                marginBottom: 15}}
+                accessible={false}  > Welcome, pleaes login or sighup to continue</Text>
+      </View>
+        <View style={styles.view2}  >
+          <TextInput style={styles.passWord }  placeholderTextColor="#fff"               
+          onChangeText={val => this.handleChange('username', val)}
+          accessible={true} accessibilityLabel="Text field For Username"
+          accessibilityHint = "Fill out your username"/>
           </View>
         <View style={styles.view2}>
-          <TextInput style={styles.passWord }  secureTextEntry={true} placeholder="  Password" placeholderTextColor="#fff"
-          onChangeText={val => this.handleChange('password', val)}/>
+          <TextInput style={styles.passWord}  secureTextEntry={true}  placeholderTextColor="#fff"
+          onChangeText={val => this.handleChange('password', val)}
+          accessible={true} accessibilityLabel="Text field For Password"
+          accessibilityHint = "Fill out your password"/>
         </View>
         <View style={{padding:15}}>
         <View style={{padding:15}}>
-          <Button style={styles.button } title='Login' onPress={this.logIn} />
+          <TouchableOpacity style={styles.btnContainerForBlue } title='Login' onPress={this.logIn} 
+          accessible={true} accessibilityLabel="Login Button"
+          accessibilityHint = "Move to default page once you succeed login">
+              <Text>Login</Text>
+          </TouchableOpacity>
         </View>
         <View>
-           <Button style={styles.button } onPress={() => this.props.navigation.navigate('SignUp')} title='Sign Up' />
+           <TouchableOpacity style={styles.btnContainerForBlue } onPress={() => this.props.navigation.navigate('SignUp')} title='Sign Up'
+            accessible={true} accessibilityLabel="Signup button"
+            accessibilityHint = "Move to Signup page for Signup" >
+              <Text>Signup</Text>
+            </TouchableOpacity>
         </View>
         </View>
     </View>
@@ -115,7 +132,8 @@ const styles = StyleSheet.create({
         borderRadius:25,
         height:50,
         marginBottom:20,
-        justifyContent:"center"},
+        justifyContent:"center",
+      },
 
   passWord:{ height:50,
     color:"white"},
@@ -129,5 +147,13 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         marginTop:40,
         marginBottom:10
-  }
+  },
+  btnContainerForBlue: {
+    backgroundColor: "#38ADE1",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    alignItems: "center",
+    marginVertical: 10,
+  },
 });
